@@ -22,6 +22,25 @@ router.get('/', (req, res) => {
 
 // POST
 
+router.post('/', (req, res) => {
+    const newTodo = req.body;
+    const todoQuery = `INSERT INTO "todo" ("task")
+    VALUES
+    ($1);`;
+        const queryResult = [
+            newTodo.task,
+        ];
+
+        pool    
+            .query(todoQuery, queryResult)
+            .then((result) => {
+                res.sendStatus(201);
+            })
+            .catch((error)=> {
+                console.log('time to find out', error)
+            });
+})
+
 // PUT
 
 // DELETE
