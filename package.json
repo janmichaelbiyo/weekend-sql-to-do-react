@@ -5,21 +5,23 @@
   "proxy": "http://localhost:5001",
   "dependencies": {
     "axios": "^0.19.2",
+    "express": "^4.18.2",
     "pg": "^8.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "@vitejs/plugin-react": "^4.2.1",
+    "nodemon": "^2.0.6",
+    "vite": "^5.0.11",
+    "vitest": "^1.2.0"
   },
   "scripts": {
     "start": "node server/server.js",
-    "build": "react-scripts build",
-    "client": "react-scripts start",
+    "build": "vite build",
+    "client": "vite",
     "server": "nodemon  --watch server server/server.js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom"
   },
   "browserslist": {
     "production": [
