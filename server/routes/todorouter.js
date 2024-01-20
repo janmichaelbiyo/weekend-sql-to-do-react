@@ -5,16 +5,15 @@ const pool = require('../modules/pool.js');
 // GET
 
 router.get('/', (req, res) => {
-     const todoQuery = 'SELECT * FROM "todo";';
+     const todoQuery = `SELECT * FROM "todo";`;
 
-     pool
-        .query(todoQuery)
-        .then((result) => {
+     pool.query(todoQuery)
+         .then((result) => {
+            console.log('this is my get result', result);
             res.send(result.rows);
         })
         .catch((error) => {
             console.log('this is it stop', error);
-
             res.sendStatus(500);
         })
 });
