@@ -3,8 +3,9 @@ import {useState, useEffect} from 'react';
 import './app.css';
 
 import Header from '../Header/Header';
-import { fetchToDo } from '../todoAPI/todo.api.js';
+import { fetchToDo, deleteToDo } from '../todoAPI/todo.api.js';
 import AddTask from '../AddTask/AddTask.jsx';
+
 
 
 function App () {
@@ -29,6 +30,16 @@ useEffect(() => {
   refreshToDO();
 }, []); 
 
+const handleClickDelete = (todoDataId) => {
+    console.log('this is the task id we want gone', todoDataId);
+    deleteToDo(todoDataId)
+    .then((response) => {
+      refreshToDO();
+    }) 
+    .catch((error) => {
+      console.log('this is delete error', error);
+    });
+};
   
   return (
     <div>
@@ -40,7 +51,7 @@ useEffect(() => {
               <ul>
                 <li> {todoData.task} </li>
                 <button> Complete </button>
-                <button> Delete </button>
+                <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
               </ul>
             </div>
           )

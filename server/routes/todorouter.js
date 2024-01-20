@@ -64,12 +64,13 @@ router.put('/:id', (req, res) => {
 // DELETE
 
 router.delete('/:id', (req,res) => {
-    const queryDeleteTodo = `DELETE FROM "todo" WHERE "id" = ${req.params.id}`;
+    const todoId = req.params.id;
+    const queryDeleteTodo = `DELETE FROM "todo" WHERE "id" = $1;`;
 
     pool    
-        .query(queryDeleteTodo)
-        .then((result) => {
-            req.send(result.rows);
+        .query(queryDeleteTodo, [todoId])
+        .then((response) => {
+            res.sendStatus(200);
         })
         .catch((error) => {
             console.log('fix me now dude', error);

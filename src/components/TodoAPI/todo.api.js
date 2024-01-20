@@ -6,4 +6,8 @@ export const fetchToDo = () => {
 
 export const postToDo = (todoData) => {
     return axios.post('/api/todo', todoData)
-}
+};
+
+export const deleteToDo = (todoDataId) => {
+    return axios.delete(`/api/todo/${todoDataId}`);
+};
