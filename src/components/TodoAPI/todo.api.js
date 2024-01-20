@@ -11,3 +11,7 @@ export const postToDo = (todoData) => {
 export const deleteToDo = (todoDataId) => {
     return axios.delete(`/api/todo/${todoDataId}`);
 };
+
+export const updateToDo = (todoDataId) => {
+    return axios.put(`/api/todo/${todoDataId}`);
+}

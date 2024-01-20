@@ -45,11 +45,12 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     const id = req.params.id;
     const todoData = req.body;
-    const queryTodoUpdate = `UPDATE "todo" SET "is_complete" = TRUE;`;
+    const queryTodoUpdate = `UPDATE "todo" SET "is_complete" = NOT "is_complete" 
+    WHERE "id" =$1;`;
 
     pool
-        .query(queryTodoUpdate, [todoData.is_complete, id])
-        .then((result) => {
+        .query(queryTodoUpdate, [id])
+        .then((response) => {
             res.sendStatus(200);
         })
         .catch((error) => {

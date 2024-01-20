@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import './app.css';
 
 import Header from '../Header/Header';
-import { fetchToDo, deleteToDo } from '../todoAPI/todo.api.js';
+import { fetchToDo, deleteToDo, updateToDo } from '../todoAPI/todo.api.js';
 import AddTask from '../AddTask/AddTask.jsx';
 
 
@@ -40,6 +40,16 @@ const handleClickDelete = (todoDataId) => {
       console.log('this is delete error', error);
     });
 };
+
+const handleClickUpdate = (todoDataId) => {
+    updateToDo(todoDataId)
+        .then((response) => {
+          refreshToDO();
+        })
+        .catch((error) => {
+          console.log('this is the problem with the update', error);
+        });
+}
   
   return (
     <div>
@@ -50,7 +60,8 @@ const handleClickDelete = (todoDataId) => {
             <div key={dataIndex}>
               <ul>
                 <li> {todoData.task} </li>
-                <button> Complete </button>
+                <p>Complete?: {todoData.is_complete ? 'Yes' : 'No'} </p>
+                <button onClick={(event) => handleClickUpdate(todoData.id)}> Complete </button>
                 <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
               </ul>
             </div>
