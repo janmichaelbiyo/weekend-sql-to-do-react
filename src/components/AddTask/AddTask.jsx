@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { postToDo } from '../todoAPI/todo.api';
+import './AddTask.css';
 
 function AddTask(props) {
     const [taskValue, setTaskValue] = useState('');
@@ -23,7 +24,7 @@ function AddTask(props) {
     };
 
     return (
-        <form onSubmit={submitTask}>
+        <form onSubmit={submitTask} className="addTask">
             <label>
                 <span> This is the Task: </span>
                 <input id="Task" onChange={(event) => setTaskValue(event.target.value)}

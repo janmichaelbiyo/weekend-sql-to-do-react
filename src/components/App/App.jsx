@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react';
-import './app.css';
+import './App.css';
 
 import Header from '../Header/Header';
 import { fetchToDo, deleteToDo, updateToDo } from '../todoAPI/todo.api.js';
@@ -60,7 +60,9 @@ const handleClickUpdate = (todoDataId) => {
             <div key={dataIndex}>
               <ul>
                 <li> {todoData.task} </li>
-                <p>Complete?: {todoData.is_complete ? 'Yes' : 'No'} </p>
+                <p className={`todo ${
+                  todoData.is_complete ? 'Yes' : 'No'
+                }`}>Complete?: {todoData.is_complete ? 'Yes' : 'No'}  </p>
                 <button onClick={(event) => handleClickUpdate(todoData.id)}> Complete </button>
                 <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
               </ul>
