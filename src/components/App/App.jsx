@@ -57,11 +57,12 @@ const handleClickUpdate = (todoDataId) => {
     <div>
     <Header />
     <AddTask todoRefreshCallback={refreshToDO} />
-    <Grid container spacing={2}>
+    <Grid container spacing={0}>
     {todoList.map((todoData, dataIndex) => {
           return(
             <div key={dataIndex}>
               <Grid xs={12}>
+              <Box sx={{ p:3, border: '3px solid grey' }}>
               <ul>
                 <li> {todoData.task} </li>
                 <p className={`todo ${
@@ -70,6 +71,7 @@ const handleClickUpdate = (todoDataId) => {
                 <button onClick={(event) => handleClickUpdate(todoData.id)}> Complete </button>
                 <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
               </ul>
+              </Box>
               </Grid>
             </div>
           )
