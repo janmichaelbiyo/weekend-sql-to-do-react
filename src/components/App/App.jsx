@@ -5,7 +5,9 @@ import './App.css';
 import Header from '../Header/Header';
 import { fetchToDo, deleteToDo, updateToDo } from '../todoAPI/todo.api.js';
 import AddTask from '../AddTask/AddTask.jsx';
-
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/system/Box';
 
 
 function App () {
@@ -55,9 +57,11 @@ const handleClickUpdate = (todoDataId) => {
     <div>
     <Header />
     <AddTask todoRefreshCallback={refreshToDO} />
+    <Grid container spacing={2}>
     {todoList.map((todoData, dataIndex) => {
           return(
             <div key={dataIndex}>
+              <Grid xs={12}>
               <ul>
                 <li> {todoData.task} </li>
                 <p className={`todo ${
@@ -66,10 +70,11 @@ const handleClickUpdate = (todoDataId) => {
                 <button onClick={(event) => handleClickUpdate(todoData.id)}> Complete </button>
                 <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
               </ul>
+              </Grid>
             </div>
           )
     })}
-
+    </Grid>
     </div>    
   );
 
