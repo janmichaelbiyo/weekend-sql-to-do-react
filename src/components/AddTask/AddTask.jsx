@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { postToDo } from '../todoAPI/todo.api';
 import './AddTask.css';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 
 function AddTask(props) {
     const [taskValue, setTaskValue] = useState('');
@@ -30,7 +32,7 @@ function AddTask(props) {
                 <input id="Task" onChange={(event) => setTaskValue(event.target.value)}
                 value={taskValue} />
             </label>
-            <button type="submit"> SUBMIT </button>
+            <Fab size="small" color='success' type="submit"> <AddIcon /> </Fab>
             
 
         </form>
