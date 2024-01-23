@@ -8,6 +8,10 @@ import AddTask from '../AddTask/AddTask.jsx';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/system/Box';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CheckIcon from '@mui/icons-material/Check';
+
+
 
 
 function App () {
@@ -62,14 +66,14 @@ const handleClickUpdate = (todoDataId) => {
           return(
             <div key={dataIndex}>
               <Grid xs={12}>
-              <Box sx={{ p:3, border: '3px solid grey' }}>
+              <Box sx={{ p:3, border: '3px solid grey', bgcolor: 'info.main'}}>
               <ul>
                 <li> {todoData.task} </li>
                 <p className={`todo ${
                   todoData.is_complete ? 'Yes' : 'No'
                 }`}>Complete?: {todoData.is_complete ? 'Yes' : 'No'}  </p>
-                <button onClick={(event) => handleClickUpdate(todoData.id)}> Complete </button>
-                <button onClick={(event) => handleClickDelete(todoData.id)}> Delete </button>
+                <Button variant="contained" startIcon={<CheckIcon />} onClick={(event) => handleClickUpdate(todoData.id)}> Complete </Button>
+                <Button variant="contained" color="warning" startIcon={<DeleteIcon />} onClick={(event) => handleClickDelete(todoData.id)}>Delete</Button>
               </ul>
               </Box>
               </Grid>
