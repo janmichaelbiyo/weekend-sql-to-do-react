@@ -22,7 +22,7 @@
     "vitest": "^1.2.0"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "server server/server.js",
     "build": "vite build",
     "client": "vite",
     "server": "nodemon  --watch server server/server.js",
